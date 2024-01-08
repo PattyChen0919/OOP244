@@ -1,0 +1,67 @@
+//// runs the phone directory application
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <cstdio>
+#include "cStrTools.h"
+#include "Phone.h"
+#define MAX_LINE 50
+//
+// 
+// 
+// 
+//from directory
+using namespace std;
+namespace sdds {
+
+
+	void phoneDir(const char* programTitle, const char* fileName) {
+		phoneBook phoneBook;
+		char namesearch[MAX_LENGTH + 1];
+		char lowername[MAX_LENGTH + 1];
+		char lowerPhoneBookName[MAX_LENGTH + 1];
+		bool valid = true; // Flag, bool valid = true
+		const char* filePointer = 0;
+
+		cout << programTitle << " phone directory search" << endl;
+		cout << "-------------------------------------------------------" << endl;
+
+		FILE* fptr = fopen(fileName, "r");
+
+		if (fptr != NULL) {
+			do {
+				cout << "Enter a partial name to search (no spaces) or enter '!' to exit" << endl;
+				cout << "> ";
+				cin >> namesearch;
+				toLowerCaseAndCopy(lowername, namesearch);
+
+				if (strCmp(namesearch, "!") == 0) {
+					cout << "Thank you for using " << programTitle << " directory." << endl;
+					//valid = 0;
+				}
+				else {
+					while (fscanf(fptr, "%[^\t]\t%s\t%s\t%s\n", phoneBook.name, phoneBook.areaCode, phoneBook.prefix, phoneBook.number) != EOF)
+					{
+						toLowerCaseAndCopy(lowerPhoneBookName, phoneBook.name);
+						filePointer = strStr(lowerPhoneBookName, lowername);
+
+						if (filePointer != NULL)
+						{
+							cout << phoneBook.name << ": (" << phoneBook.areaCode << ") " << phoneBook.prefix << "-" << phoneBook.number << endl;
+
+							valid = true;
+						}
+					}
+					fseek(fptr, 0, SEEK_SET);
+					valid = false;
+				}
+			} while (!valid);
+
+			fclose(fptr);
+		}
+		else {
+			cout << fileName << " file not found!" << endl;
+			cout << "Thank you for using Star Wars directory." << endl;
+		}
+	}
+}
+

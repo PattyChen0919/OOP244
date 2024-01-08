@@ -1,0 +1,15 @@
+//*****************************************************************************
+//  <assessment name example : Workshop - #1 (Reflect)>
+//  Full Name   : Pei-Ti, Chen
+//  Student ID# : 133237222
+//	Email       : pchen81@myseneca.ca
+//	Section     : OOP244 NCC
+//	Date        : 2023/09/19
+//	Authenticity Declaration :
+//  I have done all the coding by myself and only copied the code 
+//  that my professor provided to complete my workshops and assignments.
+//*****************************************************************************
+
+From this workshop, I learned that I need to define some variables, like struct phoneBook, an array of nameSearch for user input, an array of lowerName to store the lower version, a bool flag, and a pointer to filePtr. Then I need to open the file, if it is not NULL, I need to keep looping the user prompt until the user inputs "!". Inside the loop, I need to copy nameSearch first, then compare whether nameSearch matches "!" or not. If yes, then exit. Otherwise, I need to check if the phonebook matches nameSearch or not. But before this, I need to set the phonebook to a temporary name called lowerName in case I don’t change the original data in the phonebook. Keep looping until valid equals false. Also, I need to have an else statement for the file if it is not found.
+
+I face some difficulty, for example, when I do fscanf to search the user input and phone book to see if they match or not. I can only input to search once, but after that, nothing shows up. After trying so many ways, I finally figured out that I didn’t rewind (fptr) after the while loop. So, every time it searches it, it will stop in there and won't go back to the top of the phone book and check the second input. After I put rewind (fptr), it works properly.

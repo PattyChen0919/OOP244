@@ -1,0 +1,46 @@
+////from directory
+//void phoneDir(const char* programTitle, const char* fileName) {
+//	phoneBook phoneBook;
+//	char name[MAX_LENGTH + 1];
+//	bool valid = true; // Flag, bool valid = true
+//	const char* filePointer = 0;
+
+//	cout << programTitle << " phone directory search" << endl;
+//	cout << "-------------------------------------------------------" << endl;
+
+//	FILE* fptr = fopen(fileName, "r");
+
+//	if (fptr != NULL) {
+//		do {
+//			cout << "Enter a partial name to search (no spaces) or enter '!' to exit" << endl;
+//			cout << "> ";
+//			cin >> name;
+//			toLowerCaseAndCopy(name, name);
+
+//			if (strCmp(name, "!") == 0) {
+//				cout << "Thank you for using " << programTitle << " directory." << endl;
+//				valid = 0;
+//			}
+//			else {
+//				while (fscanf(fptr, "%[^\t]\t%s\t%s\t%s\n", phoneBook.name, phoneBook.areaCode, phoneBook.prefix, phoneBook.number) != EOF)
+//				{
+//					toLowerCaseAndCopy(phoneBook.name, phoneBook.name);
+//					filePointer = strStr(phoneBook.name, name);
+
+//					if (filePointer != NULL)
+//					{
+//						cout << phoneBook.name << ": (" << phoneBook.areaCode << ") " << phoneBook.prefix << "-" << phoneBook.number << endl;
+
+//					}
+//				}
+//				//fseek(fptr, 0, SEEK_SET);
+//			}
+//		} while (valid);
+
+//		fclose(fptr);
+//	}
+//	else {
+//		cout << fileName << " file not found!" << endl;
+//		cout << "Thank you for using Star Wars directory." << endl;
+//	}
+//}
